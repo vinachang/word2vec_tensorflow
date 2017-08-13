@@ -85,43 +85,6 @@ class SkipGram:
 
     def _define_graph(self):
         with self.graph.as_default(), tf.device('/cpu:0'):
-            # # Input data.
-            # train_dataset = tf.placeholder(tf.int32, shape=[self.batch_size])
-            # train_labels = tf.placeholder(tf.int32, shape=[self.batch_size, 1])
-            #
-            # # Variables.
-            # embeddings = tf.Variable(
-            #     tf.random_uniform([self.vocabulary_size, self.embedding_size], -1.0, 1.0))
-            # softmax_weights = tf.Variable(
-            #     tf.truncated_normal([self.vocabulary_size, self.embedding_size],
-            #                         stddev=1.0 / math.sqrt(self.embedding_size)))
-            # softmax_biases = tf.Variable(tf.zeros([self.vocabulary_size]))
-            #
-            # # Model.
-            # # Look up embeddings for inputs.
-            # embed = tf.nn.embedding_lookup(embeddings, train_dataset)
-            #
-            # # Compute the softmax loss, using a sample of the negative labels each time.
-            # loss = tf.reduce_mean(
-            #     tf.nn.sampled_softmax_loss(weights=softmax_weights, biases=softmax_biases, inputs=embed,
-            #                                labels=train_labels, num_sampled=self.num_sampled,
-            #                                num_classes=self.vocabulary_size))
-            #
-            # # Optimizer.
-            # # Note: The optimizer will optimize the softmax_weights AND the embeddings.
-            # # This is because the embeddings are defined as a variable quantity and the
-            # # optimizer's `minimize` method will by default modify all variable quantities
-            # # that contribute to the tensor it is passed.
-            # # See docs on `tf.train.Optimizer.minimize()` for more details.
-            # self.optimizer = tf.train.AdagradOptimizer(1.0).minimize(loss)
-            # self.train_dataset = train_dataset
-            # self.train_labels = train_labels
-            # self.loss = loss
-            # # Compute the similarity between minibatch examples and all embeddings.
-            # # We use the cosine distance:
-            # norm = tf.sqrt(tf.reduce_sum(tf.square(embeddings), 1, keep_dims=True))
-            # self.normalized_embeddings = embeddings / norm
-
             # Input data.
             self.train_dataset = tf.placeholder(tf.int32, shape=[self.batch_size])
             self.train_labels = tf.placeholder(tf.int32, shape=[self.batch_size, 1])
